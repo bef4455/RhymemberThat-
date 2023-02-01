@@ -1,0 +1,67 @@
+body{
+  text-align: center;  
+  background-image: url('/img/Vaporbg.gif');
+    background-size: cover;
+    
+    
+    
+    height: 100vh;
+    padding:0;
+    margin:0;
+} 
+
+  #level-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3rem;
+    margin:  5%;
+    border: 2px #000000;
+    color: #FEF2BF;
+  }
+  
+  .container {
+    display: block;
+    width: 50%;
+    margin: auto;
+  } 
+  
+  .btn {
+    display: inline-block ;
+    margin: 25px;
+    height: 200px;
+    width: 200px;
+    border: 2px solid #000000;
+    border-radius: 20%; 
+  }
+  
+  .pink {
+    background-color: #ff71ce;
+  }
+  .pink.active {
+    background-color: #ffcced;
+  }
+  .blue {
+    background-color: #01cdfe;
+  }
+  .blue.active {
+    background-color: #92e9ff;
+  }
+  .green {
+    background-color: #05ffa1;
+  }
+  .green.active {
+    background-color: #90ffd4;
+  }
+  .purple {
+    background-color: #b967ff;
+  }
+  .purple.active {
+    background-color: #e3c3ff;
+  }
+  
+  .game-over {
+    width: 200px;
+    height: 200px;
+    background-image: url('/img/statue.gif');
+    background-size: 100%;
+    background-position: center center;
+  }
