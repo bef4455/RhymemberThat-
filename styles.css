@@ -15,8 +15,19 @@ body{
     font-size: 3rem;
     margin:  5%;
     border: 2px #000000;
-    color: #FEF2BF;
-  }
+    color: #7b38d8;
+
+    animation-duration: .8s;
+    animation-name: clignoter;
+    animation-iteration-count: infinite;
+    transition: none;
+ }
+ @keyframes clignoter {
+   0%   { opacity:1; }
+   40%   {opacity:0; }
+   100% { opacity:1; }
+ }
+  
   
   .container {
     display: block;
@@ -27,41 +38,142 @@ body{
   .btn {
     display: inline-block ;
     margin: 25px;
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     border: 2px solid #000000;
-    border-radius: 20%; 
+    border-radius: 20%;
+    cursor: pointer;
+
+    display: inline-block;
+    background-color: #7b38d8;
+    border-radius: 10px;
+    border: 4px double #e65ff8;
+    color: #eeeeee;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
   }
+  button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  button span:after {
+    content: "/00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  button:hover {
+    background-color: #f7c2f9;
+  }
+  button:hover span {
+    padding-right: 25px;
+  }
+  button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+
+
+
+
+  
   
   .pink {
-    background-color: #ff71ce;
+    background-color: #fa24af;
   }
-  .pink.active {
+  .pink.active, .pink:active {
     background-color: #ffcced;
   }
   .blue {
     background-color: #01cdfe;
   }
-  .blue.active {
-    background-color: #92e9ff;
+  .blue.active, .blue:active {
+    background-color: #c7f4ff;
   }
   .green {
-    background-color: #05ffa1;
+    background-color: #00b871;
   }
-  .green.active {
-    background-color: #90ffd4;
+  .green.active, .green:active {
+    background-color: #ebfff7;
   }
   .purple {
-    background-color: #b967ff;
+    background-color: #9114ff;
   }
-  .purple.active {
+  .purple.active, .purple:active {
     background-color: #e3c3ff;
   }
   
   .game-over {
-    width: 200px;
-    height: 200px;
-    background-image: url('/img/statue.gif');
+    
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 400px;
+    height: 550px;
+    background-image: url('/img/statue.gif') ;
     background-size: 100%;
     background-position: center center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3rem;
+    color: #ff0000;
   }
+
+
+  #score {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3rem;
+    color: #7b38d8;
+}
+
+button {
+  display: inline-block;
+  background-color: #7b38d8b2;
+  border-radius: 10px;
+  border: 4px double #e65ff8;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+button span:after {
+  content: "/00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+button:hover {
+  background-color: #f7c2f9;
+}
+button:hover span {
+  padding-right: 25px;
+}
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+.remove {
+  display: none;
+}
