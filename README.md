@@ -1,1 +1,6 @@
-# RhymemberThat-
+
+# Project Title
+Rhym'emberThat
+
+## Tech Stack
+- Javascript
