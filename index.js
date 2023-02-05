@@ -1,13 +1,17 @@
 
 
-
+// 
 window.addEventListener("keydown", function (event) {
     if (event.code === "Enter") {
         document.querySelector("#level-title").style.visibility = "hidden";
-    // enter.play();
-}
-startGame();   
+        // enter.play();
+    }
+    startGame();
 })
+window.addEventListener("touchstart", function (event) {
+    document.querySelector("#level-title").style.visibility = "hidden";
+    startGame();
+});
 
 let blueWav = new Audio('sound/blue.wav')
 let greenWav = new Audio('sound/green.wav')
@@ -32,16 +36,14 @@ let score = 0
 let intervalId
 
 
-
-
 function reset() {
-level = 1
-sequence = []
-clickCount = 0
-score = 0
-scoreElement.textContent = score
-clearInterval(intervalId)
-startGame()
+    level = 1
+    sequence = []
+    clickCount = 0
+    score = 0
+    scoreElement.textContent = score
+    clearInterval(intervalId)
+    startGame()
 }
 
 
@@ -56,7 +58,7 @@ function startGame() {
 
 function generateSequence(num) {
     sequence = []
-  
+
     for (let i = 0; i < num; i++) {
         const randomIndex = Math.floor(Math.random() * lights.length);
         const randomLight = lights[randomIndex]
@@ -66,45 +68,47 @@ function generateSequence(num) {
     intervalId = setInterval(() => {
         const currentElement = sequence[iteration]
         currentElement.classList.add('active')
-       
 
 
-        if (pink.classList.contains("active")){
-            pinkWav.play();}
 
-            if (green.classList.contains("active")){
-                greenWav.play(); } 
+        if (pink.classList.contains("active")) {
+            pinkWav.play();
+        }
 
-                if (blue.classList.contains("active")){
-                    blueWav.play();}
+        if (green.classList.contains("active")) {
+            greenWav.play();
+        }
 
-                    if (purple.classList.contains("active")){
-                        purpleWav.play()}
+        if (blue.classList.contains("active")) {
+            blueWav.play();
+        }
 
-                       
+        if (purple.classList.contains("active")) {
+            purpleWav.play()
+        }
 
         setTimeout(() => {
             currentElement.classList.remove('active')
-        }, 600)
+        }, 800)
         iteration++
         if (iteration === sequence.length) {
             clearInterval(intervalId)
             playersTurn()
         }
-    }, 900)
+    }, 1000)
 }
 
 
-pink.addEventListener("click", function(){
+pink.addEventListener("click", function () {
     pinkWav.play()
 })
-green.addEventListener("click", function(){
+green.addEventListener("click", function () {
     greenWav.play()
 })
-blue.addEventListener("click", function(){
+blue.addEventListener("click", function () {
     blueWav.play()
 })
-purple.addEventListener("click", function(){
+purple.addEventListener("click", function () {
     purpleWav.play()
 })
 
@@ -116,36 +120,38 @@ function playersTurn() {
 
 function handleClick(event) {
     if (sequence[clickCount] === event.target) {
-        
         clickCount++
-        score+=10
+        score += 10
         console.log('nice', score)
         scoreElement.textContent = score
-        if (sequence.length === clickCount) {
-            // console.log('YESSSSS')
-            clickCount = 0
-            level++
-            generateSequence(1.4 * level)
-        }
+        setTimeout(() => {
+            if (sequence.length === clickCount) {
+                // console.log('YESSSSS')
+                clickCount = 0
+                level++
+                generateSequence(1.4 * level)
+            }
+        }, 900)
     } else {
         wrong.play();
-      gameOver();
+        gameOver();
 
-    //    console.log("loose")
-}}
- 
+        //    console.log("loose")
+    }
+}
 
- function gameOver() {
-gameOverElement.style.display = "block"
-tryAgain.addEventListener("click",()=>{
-    
-    tryAgain.classList.add('remove')
-    
-    gameOverElement.style.display = "none"
-    console.log("yes a wantoutraille")
-    reset();
-    
-})
+
+function gameOver() {
+    gameOverElement.style.display = "block"
+    tryAgain.addEventListener("click", () => {
+
+        tryAgain.classList.add('remove')
+
+        gameOverElement.style.display = "none"
+        console.log("yes a wantoutraille")
+        reset();
+
+    })
 
 }
-        
+
