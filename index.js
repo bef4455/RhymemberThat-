@@ -1,9 +1,4 @@
 
-
-document.querySelector("body").addEventListener("touchstart", function (event) {
-    event.preventDefault();
-    startGame();
-});
 window.addEventListener("keydown", function (event) {
     if (event.code === "Enter") {
         document.querySelector("#level-title").style.visibility = "hidden";
@@ -15,17 +10,17 @@ window.addEventListener("touchstart", function (event) {
     startGame();
 });
 
-let blueWav = new Audio('sound/blue.wav')
-let greenWav = new Audio('sound/green.wav')
-let pinkWav = new Audio('sound/pink.wav')
-let purpleWav = new Audio('sound/purple.wav')
-let wrong = new Audio('sound/wrong.wav')
-let enter = new Audio('sound/enter.wav')
+const blueWav = new Audio('sound/blue.wav')
+const greenWav = new Audio('sound/green.wav')
+const pinkWav = new Audio('sound/pink.wav')
+const purpleWav = new Audio('sound/purple.wav')
+const wrong = new Audio('sound/wrong.wav')
+
 const tryAgain = document.querySelector('.btn-try-again')
-let pink = document.querySelector('.pink')
-let blue = document.querySelector('.blue')
-let green = document.querySelector('.green')
-let purple = document.querySelector('.purple')
+const pink = document.querySelector('.pink')
+const blue = document.querySelector('.blue')
+const green = document.querySelector('.green')
+const purple = document.querySelector('.purple')
 
 
 let gameOverElement = document.querySelector(".game-over")
@@ -37,7 +32,7 @@ let clickCount = 0
 let score = 0
 let intervalId
 
-
+// This method resets the game by setting all the variables back to their initial values, and then calls the startGame method.
 function reset() {
     level = 1
     sequence = []
@@ -48,16 +43,12 @@ function reset() {
     startGame()
 }
 
-
+// This method generates the sequence of lights that the player needs to repeat, and starts the sequence.
 function startGame() {
     generateSequence(2)
-    // console.log(sequence)
-
 }
 
-
-
-
+// This method creates a random sequence of lights, and displays the sequence to the player.
 function generateSequence(num) {
     sequence = []
 
@@ -100,7 +91,6 @@ function generateSequence(num) {
     }, 1000)
 }
 
-
 pink.addEventListener("click", function () {
     pinkWav.play()
 })
@@ -114,12 +104,14 @@ purple.addEventListener("click", function () {
     purpleWav.play()
 })
 
+// This method allows the player to click on the lights, and is triggered when the sequence of lights is finished.
 function playersTurn() {
     lights.forEach(button => {
         button.addEventListener("click", handleClick)
     })
 }
 
+// This method checks if the light that the player clicked on is the correct one, and updates the score accordingly. If the player clicks on the wrong light, it calls the gameOver method.
 function handleClick(event) {
     if (sequence[clickCount] === event.target) {
         clickCount++
@@ -137,23 +129,16 @@ function handleClick(event) {
     } else {
         wrong.play();
         gameOver();
-
-        //    console.log("loose")
     }
 }
 
-
+// This method displays the game over screen and provides a button for the player to restart the game.
 function gameOver() {
     gameOverElement.style.display = "block"
     tryAgain.addEventListener("click", () => {
-
         tryAgain.classList.add('remove')
-
         gameOverElement.style.display = "none"
-        console.log("yes a wantoutraille")
         reset();
-
     })
-
 }
 
