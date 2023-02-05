@@ -1,10 +1,12 @@
 
 
-// 
+document.querySelector("body").addEventListener("touchstart", function (event) {
+    event.preventDefault();
+    startGame();
+});
 window.addEventListener("keydown", function (event) {
     if (event.code === "Enter") {
         document.querySelector("#level-title").style.visibility = "hidden";
-        // enter.play();
     }
     startGame();
 })
